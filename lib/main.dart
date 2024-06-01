@@ -37,32 +37,56 @@ class _DicePageState extends State<DicePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            child: TextButton(
-              child: Image.asset(
-                'images/dice$leftDiceNumber.png',
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Row(
+          children: <Widget>[
+            Expanded(
+              child: TextButton(
+                child: Image.asset(
+                  'images/dice$leftDiceNumber.png',
+                ),
+                onPressed: () {
+                  changeDiceFace();
+                },
               ),
-              onPressed: () {
-                changeDiceFace();
-              },
             ),
-          ),
-          //Get students to create the second die as a challenge
-          Expanded(
-            child: TextButton(
-              child: Image.asset(
-                'images/dice$rightDiceNumber.png',
+            //Get students to create the second die as a challenge
+            Expanded(
+              child: TextButton(
+                child: Image.asset(
+                  'images/dice$rightDiceNumber.png',
+                ),
+                onPressed: () {
+                  changeDiceFace();
+                },
               ),
-              onPressed: () {
-                changeDiceFace();
-              },
             ),
+          ],
+        ),
+        SizedBox(
+          height: 30,
+        ),
+        ElevatedButton(
+          onPressed: () {
+            changeDiceFace();
+          },
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(
+                Colors.red
+            ), // Change the background color
+            padding: MaterialStateProperty.all<EdgeInsets>(
+                EdgeInsets.all(16)), // Change the padding
+            textStyle: MaterialStateProperty.all<TextStyle>(
+              TextStyle(
+                  fontSize: 20), // Change the text style
+            ),
+            foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
           ),
-        ],
-      ),
+          child: Text('Roll Dice'),
+        ),
+      ],
     );
   }
 }
